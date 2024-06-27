@@ -1,5 +1,7 @@
 package com.blnk.grng.dto;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.blnk.grng.enums.PetType;
 import com.blnk.grng.util.DateTimeCalculator;
 
@@ -12,11 +14,22 @@ public class PetDto {
 	private String petName;
 	private String petBd;
 	private int petAge;
-	private String petGender;
+	private String petSex;
 	
 	public PetDto() {}
 	
-	public PetDto(String memId, PetType pettype, String petBreed, String petName, String petBd, String petGender) {
+	public PetDto(String memId, HttpServletRequest request) {
+		this.memId = memId;
+		this.petType = request.getParameter("petType");
+		this.petBreed = request.getParameter("petBreed");
+		this.petName = request.getParameter("petName");
+		this.petBd = request.getParameter("petBd");
+		DateTimeCalculator cal = new DateTimeCalculator(this.petBd);
+		this.petAge = cal.getPeriodInYears();
+		this.petSex = request.getParameter("petSex");
+	}
+	
+	public PetDto(String memId, PetType pettype, String petBreed, String petName, String petBd, String petSex) {
 		super();
 		this.memId = memId;
 		this.petType = pettype.getType();
@@ -25,10 +38,10 @@ public class PetDto {
 		this.petBd = petBd;
 		DateTimeCalculator cal = new DateTimeCalculator(petBd);
 		this.petAge = cal.getPeriodInYears();
-		this.petGender = petGender;
+		this.petSex = petSex;
 	}
 	
-	public PetDto(String memId, String petType, String petBreed, String petName, String petBd, String petGender) {
+	public PetDto(String memId, String petType, String petBreed, String petName, String petBd, String petSex) {
 		super();
 		this.memId = memId;
 		this.petType = petType;
@@ -37,13 +50,13 @@ public class PetDto {
 		this.petBd = petBd;
 		DateTimeCalculator cal = new DateTimeCalculator(petBd);
 		this.petAge = cal.getPeriodInYears();
-		this.petGender = petGender;
+		this.petSex = petSex;
 	}
 	
 	
 	
 	public PetDto(int petId, String memId, PetType pettype, String petBreed, String petName, String petBd,
-			int petAge, String petGender) {
+			int petAge, String petSex) {
 		super();
 		this.petId = petId;
 		this.memId = memId;
@@ -52,11 +65,11 @@ public class PetDto {
 		this.petName = petName;
 		this.petBd = petBd;
 		this.petAge = petAge;
-		this.petGender = petGender;
+		this.petSex = petSex;
 	}
 	
 	public PetDto(int petId, String memId, String petType, String petBreed, String petName, String petBd,
-			String petAge, String petGender) {
+			String petAge, String petSex) {
 		super();
 		this.petId = petId;
 		this.memId = memId;
@@ -65,11 +78,11 @@ public class PetDto {
 		this.petName = petName;
 		this.petBd = petBd;
 		this.petAge = Integer.parseInt(petAge);
-		this.petGender = petGender;
+		this.petSex = petSex;
 	}
 
 	public int getPetId() {
-		return petId;
+		return this.petId;
 	}
 
 	public void setPetId(int petId) {
@@ -124,12 +137,12 @@ public class PetDto {
 		this.petAge = petAge;
 	}
 
-	public String getPetGender() {
-		return petGender;
+	public String getPetSex() {
+		return petSex;
 	}
 
-	public void setPetGender(String petGender) {
-		this.petGender = petGender;
+	public void setPetSex(String petSex) {
+		this.petSex = petSex;
 	}
 	
 }

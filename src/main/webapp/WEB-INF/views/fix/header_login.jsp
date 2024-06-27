@@ -7,57 +7,83 @@
 <title>Insert title here</title>
 <style type="text/css">
 	header {
-		background-color: lavender;
-		font-weight: bold;
-		font-size: 30pt;
-		height: 50px;
-		padding: 0 10px 0 10px;
+		display: flex;
+		align-items: center;
 	}
 	
-	h5 {
-		disply: inline;
-		color: grey;
+	h1.header-logo {
+		flex-grow: 1;
 	}
-
-	a {
+	
+	h1.header-logo {
+		display: inline-block;
+		vertical-align: middle;
+		color: white;
+		margin: 0.5rem;
+		padding: 0;
+	}
+	
+	nav {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+	}
+	
+	li.icon {
+		flex-basis: 25%;
+	}
+	
+	header {
+		background: cadetblue;
+		padding: 10px;
+	}
+	
+	a.header-logo {
+		text-decoration: none;
 		color: inherit;
-		text-decoration: none;	
 	}
 	
-	a:active {
-		color: black;
-	}
-	
-		
-	button {
-		background-color: lavender;
-		color: grey;
-		border: none;
-		border-radius: 10px;
+	a.navbar-btn {
+		display: block;
+		text-align: center;
+		margin: .25rem;
+		padding: .5rem 1rem;
+		text-decoration: none;
 		font-weight: bold;
-		font-size: 20pt;
+		color: white;
+		background: teal;
 	}
 	
-	button:hover {
-		color: black;
-		transition: 0.7; 
+	a.navbar-btn:hover {
+		background: yellowgreen;
 	}
 	
-	button:active {
-		background-color: white;
-		color: black;
+	html {
+		box-sizing: border-box;
+	}
+	
+	*, *:before, *:after {
+		box-sizing: inherit;
 	}
 	
 </style>
 </head>
 <body>
 	<header>
-		<h5><a>GRNG</a></h5>
-		<span class="header-btn">
-			<button onclick=""><img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/></button>
-            <button>로그인</button>
-            <button>회원가입</button>
-		</span>
+		<h1 class="header-logo"><a class="header-logo" href="./">GRNG</a></h1>
+		<nav class="navbar">
+			<ul class="navebar_menu">
+				<li><a class="navbar-btn" href="">게시판</a></li>
+				<li><a class="navbar-btn" href="mypage">마이페이지</a></li>
+				<li><a class="navbar-btn" href="logoutOk">로그아웃</a></li>
+			</ul>
+		</nav>
 	</header>
 </body>
 </html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blnk.grng.dao.MemberDao">
+	<insert id="joinWithoutPet">
+		INSERT INTO members (memId, memPw, memName, memNickname, memGender, memEmail, memMobile) VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7})
+	</insert>
+	
+	<select id="checkIdAndPw" resultType="int">
+		SELECT COUNT(*) FROM members WHERE memId=#{param1} AND memPw=#{param2}
+	</select>
+	
+	<select id="findById" resultType="com.blnk.grng.dto.MemberDto">
+		SELECT * FROM members WHERE memId=#{param1}
+	</select>
+	
+	<update id="updatePetId">
+		UPDATE members SET petId=#{param2} WHERE memId=#{param1}
+	</update>
+	
+</mapper>

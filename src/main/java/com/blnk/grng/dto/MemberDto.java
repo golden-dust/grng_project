@@ -1,7 +1,5 @@
 package com.blnk.grng.dto;
 
-import com.blnnk.grng.dao.PetDao;
-
 public class MemberDto {
 	
 	private String memId;
@@ -145,11 +143,13 @@ public class MemberDto {
 		this.memDate = memDate;
 	}
 
-	public PetDto getMemPet() {
-		PetDao dao = new PetDao();
-		PetDto pet = dao.findById(this.petId);
-		
-		return pet;
-	}
+	/*
+	 * public PetDto getMemPet() {
+	 * PetDao dao = new PetDao();
+	 * PetDto pet = dao.findById(this.petId);
+	 * 
+	 * return pet;
+	 * }
+	 */
 
 }

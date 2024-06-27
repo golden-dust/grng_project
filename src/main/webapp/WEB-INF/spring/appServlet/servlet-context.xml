@@ -21,8 +21,24 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 데이터베이스 접근 빈즈 만들기 : jdbc dependency 필요함 -->
+	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></beans:property>
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/grng_db"></beans:property> <!-- DB url -->
+		<beans:property name="username" value="root"></beans:property> <!-- DB 접근 아이디 -->
+		<beans:property name="password" value="12345"></beans:property> <!-- 비밀번호 -->
+	</beans:bean>
+
+	<!-- 위의 데이터베이스 접근 빈즈를 마이바티스에 연결 : mybatis-spring dependency 필요함 -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<beans:property name="mapperLocations" value="classpath:com/blnk/grng/mapper/*.xml"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
+	</beans:bean>
+	
 	<context:component-scan base-package="com.blnk.grng" />
-	
-	
 	
 </beans:beans>

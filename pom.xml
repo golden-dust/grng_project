@@ -116,6 +116,36 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>        
+		
+		<!-- jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.1.4.RELEASE</version> <!-- 스프링부트에서는 버전 기입X -> 알잘딱 자동으로 해 줌 -->
+		</dependency>
+		
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.8</version>
+		</dependency>
+		
+		<!--  -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.el/el-api -->
+		<dependency>
+		    <groupId>javax.el</groupId>
+		    <artifactId>el-api</artifactId>
+		    <version>2.2</version>
+		</dependency>
+		
+		
 	</dependencies>
     <build>
         <plugins>
